@@ -5,3 +5,4 @@ logger-level: debug
 is_testing: true
 
 server-port: 8080
+public-url: http://localhost:8080

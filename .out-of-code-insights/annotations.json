@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "annotations": [
+    {
+      "fileUri": "file:///home/user/projects/service_template/src/secret_handler.hpp",
+      "file": "src/secret_handler.hpp",
+      "origin": {
+        "kind": "manual"
+      },
+      "message": "// Имя компонента, по которому фреймворк найдет его настройки в static_config.yaml",
+      "author": "Anonymous",
+      "timestamp": "2026-09-26T15:15:49.912Z",
+      "languageId": "cpp",
+      "id": "1c69a24c-4ed6-4110-9545-8e1216b41d11",
+      "schemaVersion": 2,
+      "startOffset": 355,
+      "endOffset": 423,
+      "lineHash": "5d13a6a3",
+      "contextBefore": [
+        "class CreateSecretHandler final : public userver::server::handlers::HttpHandlerJsonBase {",
+        "public:",
+        ""
+      ],
+      "contextAfter": [
+        "CreateSecretHandler(const userver::components::ComponentConfig& config,",
+        "const userver::components::ComponentContext& context);",
+        ""
+      ],
+      "state": "active",
+      "resolved": true
+    },
+    {
+      "fileUri": "file:///home/user/projects/service_template/src/secret_handler.hpp",
+      "file": "src/secret_handler.hpp",
+      "origin": {
+        "kind": "manual"
+      },
+      "message": "// Здесь мы заберем подключение к нашей базе данных PostgreSQL",
+      "author": "Anonymous",
+      "timestamp": "2026-09-26T15:19:32.105Z",
+      "languageId": "cpp",
+      "id": "c4d647c0-db91-4d84-8244-47fbfe433e32",
+      "schemaVersion": 2,
+      "startOffset": 427,
+      "endOffset": 429,
+      "lineHash": "811c9dc5",
+      "contextBefore": [
+        "",
+        "static constexpr std::string_view kName = \"handler-create-secret\";",
+        ""
+      ],
+      "contextAfter": [
+        "CreateSecretHandler(const userver::components::ComponentConfig& config,",
+        "const userver::components::ComponentContext& context);",
+        ""
+      ],
+      "state": "active"
+    }
+  ]
+}

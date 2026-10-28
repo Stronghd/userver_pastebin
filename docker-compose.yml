@@ -15,4 +15,8 @@ services:
           - 8080:8080
         working_dir: /service_template
         entrypoint:
-          - ./tests/run_as_user.sh
+          - ./run_as_user.sh
+          - "1000"
+          - "1000"
+          - sleep
+          - infinity

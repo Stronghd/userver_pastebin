@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "my notes",
+  "steps": [
+    {
+      "file": "src/secret_handler.cpp",
+      "description": "заполнение ключей у handler creater secret в static config yaml которые мы задали сами чтобы userver знал про них",
+      "line": 28
+    }
+  ]
+}

@@ -1,3 +1,57 @@
-BasedOnStyle: google
-DerivePointerAlignment: false
-IncludeBlocks: Preserve
+# Базовый стиль, от которого отталкиваемся, дальше все пункты его переопределяют
+BasedOnStyle: Google
+
+# Отступ — 4 пробела (не табы). Так по умолчанию в CLion
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Максимальная длина строки, после которой форматер переносит код.
+# В CLion по умолчанию 120
+ColumnLimit: 120
+
+# Где ставить открывающую фигурную скобку.
+# Attach = на той же строке: "void foo() {", как в CLion
+BreakBeforeBraces: Attach
+
+# int* p, а не int *p — звёздочка/амперсанд прижаты к типу
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# Отступ для case внутри switch — тоже с отступом, как в CLion
+IndentCaseLabels: true
+
+# Пространство имён (namespace { ... }) не сдвигает вложенный код вправо,
+# иначе весь файл в одном большом namespace "переезжает" на 4 пробела
+NamespaceIndentation: None
+
+# Если список аргументов/параметров не влезает в одну строку,
+# переносим по одному аргументу на строку и выравниваем их по открывающей скобке
+AlignAfterOpenBracket: Align
+BinPackArguments: false
+BinPackParameters: false
+
+# Пробел перед скобкой у if/for/while, но не у вызова функции:
+# "if (x)" и "foo(x)", а не "if(x)" и "foo (x)"
+SpaceBeforeParens: ControlStatements
+
+# Выравнивать подряд идущие присваивания и объявления по одному столбцу
+# (просто красивее читать таблицы констант)
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Короткие if/for/while не сворачивать в одну строку —
+# всегда с фигурными скобками и переносом, так нагляднее для новичка
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+
+# Сортировать #include по алфавиту внутри групп — это уже настроено
+# в CMakeLists у userver-проектов, но пусть будет и здесь
+SortIncludes: true
+
+# Не более 1 пустой строки подряд — чтобы не было "простыней" пустого места
+MaxEmptyLinesToKeep: 1
+
+# Стандарт C++, под который форматируем (влияет на расстановку в шаблонах и т.п.)
+Standard: c++20

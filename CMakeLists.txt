@@ -1,11 +1,12 @@
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 cmake_minimum_required(VERSION 3.12...3.31)
 project(service_template CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(DownloadUserver)
 
-find_package(userver COMPONENTS core QUIET)
-if(NOT userver_FOUND)
+find_package(userver COMPONENTS core postgresql QUIET)
+if(NOT userver_FOUND OR NOT TARGET userver::postgresql)
   # Tries TRY_DIR first, falls back to downloading userver from GitHub using CPM.
   download_userver(TRY_DIR third_party/userver VERSION 2.8)
 endif()
@@ -14,16 +15,18 @@ userver_setup_environment()
 
 
 # Common sources
-add_library(${PROJECT_NAME}_objs OBJECT
+#object files
+add_library(${PROJECT_NAME}_objs OBJECT 
     src/hello.hpp
     src/hello.cpp
+    src/secret_handler.cpp
 )
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::core)
 
 
 # The Service
 add_executable(${PROJECT_NAME} src/main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_objs)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_objs userver::postgresql)
 
 
 # Unit Tests

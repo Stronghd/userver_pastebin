@@ -33,7 +33,13 @@ components_manager:
 
         http-client:
             load-enabled: $is_testing
+            core-component: http-client-core
+        http-client-core:
             fs-task-processor: fs-task-processor
+
+#        http-client:
+#            load-enabled: true
+#            core-component: http-client-core
 
         dns-client:
             fs-task-processor: fs-task-processor
@@ -54,3 +60,22 @@ components_manager:
             path: /hello                  # Registering handler by URL '/hello'.
             method: GET,POST              # It will only reply to GET (HEAD) and POST requests.
             task_processor: main-task-processor  # Run it on CPU bound task processor
+        
+        handler-create-secret:
+            path: /api/v1/secrets
+            method: POST
+            task_processor: main-task-processor
+            max_request_size: 22020096
+            request_body_size_log_limit: 0        # не логировать тело запроса (там записки)
+            response_data_size_log_limit: 0       # и тело ответа
+            max-text-size: 1048576                # 1 МБ
+            max-file-size: 10485760               # 10 МБ
+            max-files: 10
+            max-total-size: 20971520              # 20 МБ
+            public-url: $public-url
+        
+        postgres-db-1:                   #подключение базы данных
+            dbconnection: $dbconnection   #подключение по паролю логину адрес
+            blocking_task_processor: fs-task-processor #
+            dns_resolver: async         
+            sync-start: true              #ждем подключение бд

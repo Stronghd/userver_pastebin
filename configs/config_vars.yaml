@@ -5,3 +5,7 @@ logger-level: info
 is_testing: false
 
 server-port: 8080
+
+dbconnection: 'postgresql://user:password@host.docker.internal:5432/postgres'
+
+public-url: http://localhost:8080
